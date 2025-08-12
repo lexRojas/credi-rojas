@@ -1,75 +1,148 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Image } from "expo-image";
+import { Text, SectionList, StatusBar, StyleSheet, View } from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+
+const DATA = [
+  {
+    title: "RESUMEN DE MOVIMIENTOS",
+    data: ["Pizza", "Burger", "Risotto"],
+  },
+  {
+    title: "ACCIONES",
+    data: ["French Fries", "Onion Rings", "Fried Shrimps"],
+  },
+];
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: "#32525c", dark: "lightgray" }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
+          source={require("@/assets/images/banner2.png")}
           style={styles.reactLogo}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+      }
+    >
+      {/* <View style={styles.container}>
+        <SectionList
+          style={styles.sectionList}
+          sections={DATA}
+          keyExtractor={(item, index) => item + index}
+          renderItem={({ item }) => (
+            <View style={styles.item}>
+              <ThemedText style={styles.title}>{item}</ThemedText>
+            </View>
+          )}
+          renderSectionHeader={({ section: { title } }) => (
+            <ThemedText style={styles.header}>{title}</ThemedText>
+          )}
+        />
+      </View> */}
+
+      {/**  Tarjeta Principal */}
+      <ThemedView style={styles.card}>
+        <ThemedView style={styles.titleContainer}>
+          <ThemedText style={styles.title} type="title">
+            RESUMEN DE MOVIMIENTOS
+          </ThemedText>
+        </ThemedView>
+
+        <ThemedView style={styles.card_item}>
+          <ThemedView style={styles.card_logo}>
+            <Image
+              source={require("@/assets/images/money2.png")}
+              style={styles.item_logo}
+            />
+          </ThemedView>
+          <ThemedView style={styles.card_detail}>
+            <ThemedView style={styles.card_detail_title}>
+              <ThemedText style={styles.card_detail_title_text}>Acciones</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.card_detail_data}>
+              <ThemedView> <ThemedText style={styles.card_detail_text}> 45,522.00</ThemedText></ThemedView>
+              <ThemedView> <ThemedText> ></ThemedText>  </ThemedView>
+            </ThemedView>
+          </ThemedView>
+        </ThemedView>
       </ThemedView>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  card: {
+    borderWidth: 2,
+    borderColor: "lightgray",
+    padding: 0,
+    flexDirection: "column",
+  },
+  card_detail_title: {
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingVertical:10,
+  },
+    card_detail_title_text: {
+    fontSize:24,
+    color:"#2e2e2eff",
+    fontWeight:"bold"
+
+  },
+  card_detail: {
+    flexDirection: "column",
+    flex:1
+
+  },
+  card_detail_data: {
+    flexDirection: "row",
+    justifyContent:"space-evenly"
+
+ },
+   card_detail_text: {
+    fontSize:24,
+    color:"#054d0dff",
+    fontWeight:"bold"
+
+  },
+
+  card_item: {
+    flexDirection: "row",
+    paddingVertical:10,
+  },
+
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 10,
+    paddingLeft: 10,
+    paddingVertical: 5,
+    backgroundColor: "#ededed",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
+
   reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+    height: 100,
+    width: 200,
+    top: 40,
+    resizeMode: "contain",
+  },
+
+  title: {
+    fontSize: 24,
+    color: "#959595",
+  },
+  item_logo: {
+    height: 50,
+    width: 200,
+    resizeMode: "center",
+
+  },
+  card_logo: {
+    width: 100,
+        position:"relative",
+    alignItems:"center",
+    justifyContent:"center" 
   },
 });
