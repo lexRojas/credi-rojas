@@ -42,8 +42,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "b9ad1abc-6b92-4317-a3ad-3b9ec89c29e3"
+        "projectId": "5f7685ac-2ee1-4eaf-8e4e-da05b131047b"
       }
-    }
+    },
+    "owner": "neruda"
   }
 }

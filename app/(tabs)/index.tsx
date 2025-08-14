@@ -60,11 +60,22 @@ export default function HomeScreen() {
           </ThemedView>
           <ThemedView style={styles.card_detail}>
             <ThemedView style={styles.card_detail_title}>
-              <ThemedText style={styles.card_detail_title_text}>Acciones</ThemedText>
+              <ThemedText style={styles.card_detail_title_text}>
+                Acciones
+              </ThemedText>
             </ThemedView>
             <ThemedView style={styles.card_detail_data}>
-              <ThemedView> <ThemedText style={styles.card_detail_text}> 45,522.00</ThemedText></ThemedView>
-              <ThemedView> <ThemedText> ></ThemedText>  </ThemedView>
+              <ThemedView>
+                {" "}
+                <ThemedText style={styles.card_detail_text}>
+                  {" "}
+                  45,522.00
+                </ThemedText>
+              </ThemedView>
+              <ThemedView>
+                {" "}
+                <ThemedText> +</ThemedText>{" "}
+              </ThemedView>
             </ThemedView>
           </ThemedView>
         </ThemedView>
@@ -83,34 +94,30 @@ const styles = StyleSheet.create({
   card_detail_title: {
     flexDirection: "row",
     justifyContent: "center",
-    paddingVertical:10,
+    paddingVertical: 10,
   },
-    card_detail_title_text: {
-    fontSize:24,
-    color:"#2e2e2eff",
-    fontWeight:"bold"
-
+  card_detail_title_text: {
+    fontSize: 24,
+    color: "#2e2e2eff",
+    fontWeight: "bold",
   },
   card_detail: {
     flexDirection: "column",
-    flex:1
-
+    flex: 1,
   },
   card_detail_data: {
     flexDirection: "row",
-    justifyContent:"space-evenly"
-
- },
-   card_detail_text: {
-    fontSize:24,
-    color:"#054d0dff",
-    fontWeight:"bold"
-
+    justifyContent: "space-evenly",
+  },
+  card_detail_text: {
+    fontSize: 24,
+    color: "#054d0dff",
+    fontWeight: "bold",
   },
 
   card_item: {
     flexDirection: "row",
-    paddingVertical:10,
+    paddingVertical: 10,
   },
 
   titleContainer: {
@@ -137,12 +144,11 @@ const styles = StyleSheet.create({
     height: 50,
     width: 200,
     resizeMode: "center",
-
   },
   card_logo: {
     width: 100,
-        position:"relative",
-    alignItems:"center",
-    justifyContent:"center" 
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
