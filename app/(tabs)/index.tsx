@@ -1,20 +1,18 @@
 import { Image } from "expo-image";
-import { Text, SectionList, StatusBar, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet } from "react-native";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
+import React from "react";
+
+import { TarjetaDatos } from "@/components/TarjetaDatos";
+import { ButtonAction } from "@/components/ButtonAction";
+
+import { IcoSaving } from "@/components/ui/ico-saving";
+import { IcoWithdraw } from "@/components/ui/ico-withdraw";
+import { IcoRequestLoan } from "@/components/ui/ico-request-loan";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
-const DATA = [
-  {
-    title: "RESUMEN DE MOVIMIENTOS",
-    data: ["Pizza", "Burger", "Risotto"],
-  },
-  {
-    title: "ACCIONES",
-    data: ["French Fries", "Onion Rings", "Fried Shrimps"],
-  },
-];
 
 export default function HomeScreen() {
   return (
@@ -27,23 +25,6 @@ export default function HomeScreen() {
         />
       }
     >
-      {/* <View style={styles.container}>
-        <SectionList
-          style={styles.sectionList}
-          sections={DATA}
-          keyExtractor={(item, index) => item + index}
-          renderItem={({ item }) => (
-            <View style={styles.item}>
-              <ThemedText style={styles.title}>{item}</ThemedText>
-            </View>
-          )}
-          renderSectionHeader={({ section: { title } }) => (
-            <ThemedText style={styles.header}>{title}</ThemedText>
-          )}
-        />
-      </View> */}
-
-      {/**  Tarjeta Principal */}
       <ThemedView style={styles.card}>
         <ThemedView style={styles.titleContainer}>
           <ThemedText style={styles.title} type="title">
@@ -51,83 +32,34 @@ export default function HomeScreen() {
           </ThemedText>
         </ThemedView>
 
-        <ThemedView style={styles.card_item}>
-          <ThemedView style={styles.card_logo}>
-            <Image
-              source={require("@/assets/images/money2.png")}
-              style={styles.item_logo}
-            />
-          </ThemedView>
-          <ThemedView style={styles.card_detail}>
-            <ThemedView style={styles.card_detail_title}>
-              <ThemedText style={styles.card_detail_title_text}>
-                Acciones
-              </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.card_detail_data}>
-              <ThemedView>
-                {" "}
-                <ThemedText style={styles.card_detail_text}>
-                  {" "}
-                  45,522.00
-                </ThemedText>
-              </ThemedView>
-              <ThemedView>
-                {" "}
-                <ThemedText> +</ThemedText>{" "}
-              </ThemedView>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
+        <TarjetaDatos titulo="Acciones" monto={45522.00} moneda="CRC" icono="acciones" />
+        <TarjetaDatos titulo="Préstamos" monto={12300.50} moneda="CRC" icono="prestamos" />
+        <TarjetaDatos titulo="Dividendos" monto={2300.50} moneda="CRC" icono="dividendos" />
+
       </ThemedView>
+
+      <ThemedView style={styles.card}>
+        <ThemedView style={styles.titleContainer}>
+          <ThemedText style={styles.title} type="title">
+            QUE DESEA HACER...
+          </ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.actionsContainer}>
+          <ButtonAction color="#34C759" label="Solicitar Préstamo" icon={<IcoRequestLoan size={30} />} onPress={() => Alert.alert('Acción', 'Botón de Solicitar Préstamo presionado')} />
+          <ButtonAction color="#FF9500" label="Pagar Préstamo" icon={<IcoWithdraw size={30} />} onPress={() => Alert.alert('Acción', 'Botón de Pagos presionado')} />
+          <ButtonAction color="#5856D6" label="Comprar Acción" icon={<IcoSaving size={30} />} onPress={() => Alert.alert('Acción', 'Botón de Retirar presionado')} />
+        </ThemedView>
+
+
+      </ThemedView>
+
+
+
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    borderWidth: 2,
-    borderColor: "lightgray",
-    padding: 0,
-    flexDirection: "column",
-  },
-  card_detail_title: {
-    flexDirection: "row",
-    justifyContent: "center",
-    paddingVertical: 10,
-  },
-  card_detail_title_text: {
-    fontSize: 24,
-    color: "#2e2e2eff",
-    fontWeight: "bold",
-  },
-  card_detail: {
-    flexDirection: "column",
-    flex: 1,
-  },
-  card_detail_data: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-  card_detail_text: {
-    fontSize: 24,
-    color: "#054d0dff",
-    fontWeight: "bold",
-  },
-
-  card_item: {
-    flexDirection: "row",
-    paddingVertical: 10,
-  },
-
-  titleContainer: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: 10,
-    paddingLeft: 10,
-    paddingVertical: 5,
-    backgroundColor: "#ededed",
-  },
 
   reactLogo: {
     height: 100,
@@ -136,19 +68,31 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
 
+  card: {
+    borderWidth: 0,
+    borderColor: "lightgray",
+    padding: 0,
+    gap: 0,
+    flexDirection: "column",
+
+  },
+  titleContainer: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 10,
+    paddingLeft: 10,
+    paddingVertical: 5,
+    backgroundColor: "#ededed",
+  },
   title: {
     fontSize: 24,
     color: "#959595",
   },
-  item_logo: {
-    height: 50,
-    width: 200,
-    resizeMode: "center",
-  },
-  card_logo: {
-    width: 100,
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  actionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 20,
+    width: '100%',
+  }
+
 });

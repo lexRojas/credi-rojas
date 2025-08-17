@@ -15,6 +15,8 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    Aritmo: require("../assets/fonts/Arimo-Italic-VariableFont_wght.ttf"),
+    "Aritmo-Bold": require("../assets/fonts/Arimo-VariableFont_wght.ttf"),
   });
 
   if (!loaded) {
