@@ -81,11 +81,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     gap: 10,
     paddingLeft: 10,
-    paddingVertical: 5,
+    paddingVertical: 0,
     backgroundColor: "#ededed",
   },
   title: {
-    fontSize: 24,
+    fontSize: 15,
     color: "#959595",
   },
   actionsContainer: {

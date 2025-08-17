@@ -40,10 +40,15 @@ export function ButtonAction({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      fontSize: 2,
       gap: 5,
-      
-      
+    },
+    label: {
+      width: size,
+      textAlign: 'center',
+      fontSize: 12,
+      marginTop: 2,
+      lineHeight:14,
+      color: '#aca6a6ff',
 
     }
   });
@@ -52,9 +57,8 @@ export function ButtonAction({
     <ThemedView style={styles.view}>
       <Pressable style={({ pressed }) => [styles.container, pressed && styles.pressed]} {...rest}>
         {icon}
-
       </Pressable>
-      {label && <ThemedText type="defaultSemiBold">{label}</ThemedText>}
+      {label && <ThemedText style={styles.label}>{label}</ThemedText>}
     </ThemedView>
   );
 }

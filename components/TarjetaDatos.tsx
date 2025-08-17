@@ -62,7 +62,7 @@ export function TarjetaDatos({ icono = "acciones", titulo, monto, moneda }: Tarj
 
                 {/** Icono link de detalle  */}
                 <ThemedView style={styles.card_link}>
-                    <IcoArrow color="#f50000ff" size={58} />
+                    <IcoArrow color="#f50000ff" size={38} />
                 </ThemedView>
             </ThemedView>
 
@@ -74,10 +74,10 @@ export function TarjetaDatos({ icono = "acciones", titulo, monto, moneda }: Tarj
 const styles = StyleSheet.create({
     card_detail_title: {
         flexDirection: "row",
-        paddingVertical: 10,
+        paddingVertical: 2,
     },
     card_detail_title_text: {
-        fontSize: 24,
+        fontSize: 20,
         color: "#b9b9b9ff",
         fontWeight: "bold",
         textAlign: "left",
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
     },
     card_detail_text: {
-        fontSize: 24,
+        fontSize: 18,
         color: "#277530ff",
         fontWeight: "bold",
     },
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     card_link: {
-        width: 50,
+        width: 40,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
