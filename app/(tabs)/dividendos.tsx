@@ -1,5 +1,7 @@
+import { Image } from "expo-image";
 import { Alert, StyleSheet } from "react-native";
 
+import ParallaxScrollView from "@/components/ParallaxScrollView";
 import React from "react";
 
 import { ButtonAction } from "@/components/ButtonAction";
@@ -10,11 +12,19 @@ import { ThemedView } from "@/components/ThemedView";
 import { IcoRequestLoan } from "@/components/ui/IcoRequestLoan";
 import { IcoSaving } from "@/components/ui/IcoSaving";
 import { IcoWithdraw } from "@/components/ui/IcoWithdraw";
-import { DashboardScreen } from "@/components/DashboardScreen";
+
 
 export default function HomeScreen() {
   return (
-    <DashboardScreen>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: "#32525c", dark: "lightgray" }}
+      headerImage={
+        <Image
+          source={require("@/assets/images/banner.png")}
+          style={styles.reactLogo}
+        />
+      }
+    >
       <ThemedView style={styles.card}>
         <ThemedView style={styles.titleContainer}>
           <ThemedText style={styles.title} type="title">
@@ -42,11 +52,22 @@ export default function HomeScreen() {
 
 
       </ThemedView>
-    </DashboardScreen>
+
+
+
+    </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+
+  reactLogo: {
+    height: 100,
+    width: 200,
+    top: 40,
+    resizeMode: "contain",
+  },
+
   card: {
     borderWidth: 0,
     borderColor: "lightgray",

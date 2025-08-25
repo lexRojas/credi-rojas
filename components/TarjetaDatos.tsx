@@ -1,9 +1,10 @@
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { IcoArrow } from "@/components/ui/ico-arrow";
+import { IcoArrow } from "@/components/ui/IcoArrow";
 import { Image } from "expo-image";
-import { StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 // Un mapa para asociar nombres de íconos con sus archivos de imagen.
 // Esto hace que el componente sea más flexible.
@@ -24,11 +25,17 @@ export type TarjetaDatosProps = {
 };
 
 export function TarjetaDatos({ icono = "acciones", titulo, monto, moneda }: TarjetaDatosProps) {
+    const router = useRouter();
 
     const montoFormateado = new Intl.NumberFormat(
         moneda === 'CRC' ? 'es-CR' : 'en-US',
         { style: 'currency', currency: moneda }
     ).format(monto);
+
+    const handleNavigation = () => {
+        // El valor de la prop `icono` coincide con el nombre de la ruta en (tabs)
+        router.push(`/(tabs)/${icono}`);
+    };
 
     return (
         <>
@@ -61,9 +68,11 @@ export function TarjetaDatos({ icono = "acciones", titulo, monto, moneda }: Tarj
                 </ThemedView>
 
                 {/** Icono link de detalle  */}
-                <ThemedView style={styles.card_link}>
+                <TouchableOpacity style={styles.card_link} onPress={handleNavigation}>
+
                     <IcoArrow color="#f50000ff" size={38} />
-                </ThemedView>
+
+                </TouchableOpacity>
             </ThemedView>
 
         </>

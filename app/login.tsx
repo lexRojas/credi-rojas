@@ -1,13 +1,13 @@
-import { Link, useRouter } from "expo-router";
 import { Image } from "expo-image";
+import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Pressable,
-  StyleSheet,
-  TextInput,
   Alert,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
+  StyleSheet,
+  TextInput,
 } from "react-native";
 
 import { ThemedText } from "@/components/ThemedText";
@@ -75,7 +75,7 @@ export default function LoginScreen() {
           <ThemedText style={styles.buttonText}>Login</ThemedText>
         </Pressable>
 
-        <Link style={styles.link} href={"/explore"}>
+        <Link style={styles.link} href={'/login'}>
           <ThemedText type="link">¿Olvidaste tu contraseña? </ThemedText>
         </Link>
       </ThemedView>
