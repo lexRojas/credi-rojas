@@ -75,9 +75,17 @@ export default function LoginScreen() {
           <ThemedText style={styles.buttonText}>Login</ThemedText>
         </Pressable>
 
-        <Link style={styles.link} href={'/login'}>
-          <ThemedText type="link">¿Olvidaste tu contraseña? </ThemedText>
-        </Link>
+        <ThemedView style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
+
+          <Link style={styles.link} href={'/login'}>
+            <ThemedText type="link">¿Olvidaste tu contraseña? </ThemedText>
+          </Link>
+
+          <Link style={styles.link} href={'/signup'}>
+            <ThemedText type="link">Crear cuenta </ThemedText>
+          </Link>
+
+        </ThemedView>
       </ThemedView>
     </KeyboardAvoidingView>
   );
